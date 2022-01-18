@@ -25,14 +25,11 @@ export default {
   },
   data(){
     return {
-      //第一次使用时getItem是null，因为用户之前没输入过记录，此时null没有length属性后面会报错，需要用“或”来指定第一次使用空数组[]
-      todoArr:JSON.parse(localStorage.getItem('todoArr')) || []
-      /*[//id用字符串，因为Number类型的id有尽头，可能超过最大范围
-        一般的待办事项没有初始值
+      todoArr:[//id用字符串，因为Number类型的id有尽头，可能超过最大范围
         {id:'001',title:'吃饭',done:true},
         {id:'002',title:'喝酒',done:false},
         {id:'003',title:'打游戏',done:true},
-      ]*/
+      ]
     }
 
   },
@@ -71,21 +68,6 @@ export default {
     }
 
 
-  },
-  watch:{
-    /*普通监视
-    todoArr(value){
-      localStorage.setItem('todoArr',JSON.stringify(value))
-    }*/
-    todoArr:{
-      //深度监视，会监视到对象里面的属性
-      deep:true,
-      handler(value){
-        localStorage.setItem('todoArr',JSON.stringify(value))
-      }
-
-
-    }
   }
 
 }
