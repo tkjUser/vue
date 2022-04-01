@@ -19,6 +19,7 @@ import MyItem from "./MyItem";//MyItem是MyList的子组件，需在此引入
 export default {
   name: "MyList",
   components:{MyItem},
+  //声明接收APP传递过来的数据，其中todoArr是自己用的，checkTodo和deleteTodo是给子组件MyItem用的
   props:['todoArr','checkTodo','deleteTodo']
 }
 </script>

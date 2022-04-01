@@ -18,7 +18,8 @@ export default {
   data(){
     return{}
   },
-  props:['todoArr','checkAllTodo','clearAllTodo'],
+  // props:['todoArr','checkAllTodo','clearAllTodo'],
+  props:['todoArr'],
   computed:{
     total(){
       return this.todoArr.length
@@ -47,7 +48,8 @@ export default {
       },
       set(value){
         // console.log('@@@',value)
-        this.checkAllTodo(value)
+        // this.checkAllTodo(value)
+        this.$emit('checkAllTOdo',value)
       }
     }
 
@@ -58,7 +60,8 @@ export default {
     this.checkAllTodo(e.target.checked)
   },*/
    clearAll(){
-     this.clearAllTodo()
+     // this.clearAllTodo()
+     this.$emit('clearAllTodo')
    }
 }
 
