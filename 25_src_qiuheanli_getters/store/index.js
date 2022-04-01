@@ -45,7 +45,6 @@ const actions={
 const mutations={
     ADD(state, value) {
         console.log('mutations里面的ADD被调用了')
-        // console.log('$$$$$$',value)
         state.sum+=value
     },
     SUB(state, value) {
@@ -55,9 +54,7 @@ const mutations={
 }
 //准备state：用于存储数据
 const state={
-    sum:0,   // 当前的和
-    school:'尚硅谷',
-    subject:'前端'
+    sum:0   // 当前的和
 }
 
 //准备getters：用于将state中的数据进行加工

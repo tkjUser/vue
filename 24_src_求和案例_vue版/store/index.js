@@ -45,7 +45,6 @@ const actions={
 const mutations={
     ADD(state, value) {
         console.log('mutations里面的ADD被调用了')
-        // console.log('$$$$$$',value)
         state.sum+=value
     },
     SUB(state, value) {
@@ -55,16 +54,7 @@ const mutations={
 }
 //准备state：用于存储数据
 const state={
-    sum:0,   // 当前的和
-    school:'尚硅谷',
-    subject:'前端'
-}
-
-//准备getters：用于将state中的数据进行加工
-const getters = {
-    bigSum(state){  // 传入的参数是state，对其数据进行加工
-        return state.sum*10
-    }
+    sum:0   // 当前的和
 }
 
 // 创建并暴露store
@@ -72,7 +62,6 @@ export default new Vuex.Store({
     actions,  // actions:actions,对象名和对象值重名，可以简写
     mutations,
     state,
-    getters
 })
 
 

@@ -9,16 +9,15 @@
       <option value="2">2</option>
       <option value="3">3</option>
     </select>
-    <!-- 使用mapMutations简化代码时，它不知道我们要参与运算的是哪个变量，默认会把Event传给mutations，因此需要在这里手动传一下参与运算的变量  -->
-    <button @click="increment(n)">+</button>
-    <button @click="decrement(n)">-</button>
-    <button @click="incrementOdd(n)">当前求和为奇数再加</button>
-    <button @click="incrementWait(n)">等一等再加</button>
+    <button @click="increment">+</button>
+    <button @click="decrement">-</button>
+    <button @click="incrementOdd">当前求和为奇数再加</button>
+    <button @click="incrementWait">等一等再加</button>
   </div>
 </template>
 
 <script>
-  import {mapState,mapGetters,mapMutations,mapActions} from 'vuex'
+  import {mapState,mapGetters} from 'vuex'
 
   export default {
     name: "Count",
@@ -29,15 +28,30 @@
       }
     },
     computed:{
+      // 靠程序员自己去写的计算属性
+      /*sum(){
+        return this.$store.state.sum
+      },
+      school(){
+        return this.$store.state.school
+      },
+      subject(){
+        return this.$store.state.subject
+      },*/
+
       // 借助mapState生成计算属性，从state中读取数据（对象写法）
       //...mapState({sum:"sum",school:"school",subject:"subject"}),  // es6语法，把mapState对象里面的键值对取出
-
       // 借助mapState生成计算属性，从state中读取数据（数组写法）
       ...mapState(["sum","school","subject"]),  //确保生成的计算属性名和从state中取出的名必须相同
 
+
+      //getters
+      /*bigSum(){
+        return this.$store.getters.bigSum
+      },*/
+
       //借助mapGetters生成计算属性，从getters中读取数据（对象写法）
       // ...mapGetters({bigSum:"bigSum"})
-
       //借助mapGetters生成计算属性，从getters中读取数据（数组写法）
       ...mapGetters(["bigSum"])
 
@@ -45,37 +59,22 @@
 
     },
     methods:{
-      //程序员亲自写方法（commit对应mutations）
-      /*increment(){
+      increment(){
         this.$store.commit('ADD',this.n) // 这里直接调用commit，需要用大写的操作描述
-      },*/
-
-      //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(对象写法)
-      ...mapMutations({increment:'ADD'}),
-
-      //借助mapMutations生成对应的方法，方法中会调用commit去联系mutations(数组写法)
-      //...mapMutations(['ADD']),   //要求方法名和操作一致。在@click处把方法名改为“ADD”
-
-
-      //程序员自己写方法（dispatch对应actions）
-      /*decrement(){
+      },
+      decrement(){
         this.$store.dispatch('sub',this.n)
       },
       incrementOdd(){
         this.$store.dispatch('addOdd',this.n)
       },
       incrementWait(){
-        /!*setTimeout(()=>{
+        /*setTimeout(()=>{
           this.$store.dispatch('add',this.n)
-        },500)*!/
+        },500)*/
         this.$store.dispatch('addWait',this.n)
-      },*/
 
-      // 借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(数组写法)
-      ...mapActions({decrement:'sub',incrementOdd:'addOdd',incrementWait:'addWait'})
-
-      // 借助mapActions生成对应的方法，方法中会调用dispatch去联系actions(数组写法)
-      //...mapActions({'sub','addOdd','addWait'})   //要求方法名和操作一致。在@click处把方法名改为“sub”，'addOdd','addWait'
+      },
 
     },
     mounted() {

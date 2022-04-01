@@ -45,7 +45,6 @@ const actions={
 const mutations={
     ADD(state, value) {
         console.log('mutations里面的ADD被调用了')
-        // console.log('$$$$$$',value)
         state.sum+=value
     },
     SUB(state, value) {
