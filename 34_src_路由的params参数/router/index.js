@@ -31,28 +31,8 @@ export default new VueRouter({
                     children:[     // 三级路由
                         {
                             name:'xiangqing',
-                            path:'detail', // 使用占位符声明接收params参数
-                            component:Detail,
-
-                            //props的第一种写法，值为对象，该对象中的所有key-value都会以props的形式传给Detail组件
-                            /*props:{
-                                a:1,
-                                b:'hello'
-                            }*/
-
-                            //props的第二种写法，值为布尔值，若布尔值为真，
-                            //就会把该路由组件接收到的所有params参数，以props的形式传给Detail组件
-                            //props:true     //这种方式对query方式无效
-
-                            //props第三种写法，值为函数
-                            props($route){
-                                return {id:$route.query.id,title:$route.query.title}
-                            }
-                            /*props({query:{id,title}}){  //解构赋值的连续写法
-                                return {id,title}
-                            }*/
-
-
+                            path:'detail/:id/:title', // 使用占位符声明接收params参数
+                            component:Detail
                         }
                     ]
                 }

@@ -13,15 +13,14 @@
            // params携带方式只能使用name指定路由，不能使用path，会报错
             //path:'/home/message/detail',
             name:'xiangqing',
-            query:{
+            params:{
               id:m.id,
               title:m.title
             }
          }">
            {{m.title}}
          </router-link>
-        <button @click="pushShow(m)">push查看</button>
-        <button @click="replaceShow(m)">replace查看</button>
+
       </li>
     </ul>
     <hr>
@@ -41,28 +40,6 @@ export default {
 
       ]
     }
-  },
-  methods:{
-    pushShow(m){
-      // console.log(this.$router)
-      this.$router.push({
-        name:'xiangqing',
-        query:{
-          id:m.id,
-          title:m.title
-        }
-      })
-    },
-    replaceShow(m){
-      this.$router.replace({
-        name:'xiangqing',
-        query:{
-          id:m.id,
-          title:m.title
-        }
-      })
-    }
-
   }
 }
 </script>
