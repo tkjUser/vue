@@ -9,31 +9,28 @@ import Message from "../pages/Message";
 import Detail from "../pages/Detail";
 
 // 创建一个路由
-const router = new VueRouter({
+export default new VueRouter({
     routes:[
         {
-            name:'guanyu',         // 给路由指定名字，“关于”
+            name:'guanyu',         // 给路由指定名字
             path:'/about',         // 一级路由的路径需要加“/”
             component:About
         },
         {
-            name:'zhuye',     //“主页”
             path:'/home',
             component:Home,
             // 二级路由
             children:[             // 关键字“children”用来说明二级路由
                 {
-                    name:'xinwen',  //”新闻“
                     path:'news',    // 二级路由不用加“/”，因为一级路由已经加过了，系统会自动给加“/”
                     component:News,
                 },
                 {
-                    name:'xiaoxi',  //“消息”
                     path:'message',
                     component:Message,
                     children:[     // 三级路由
                         {
-                            name:'xiangqing', //”详情“
+                            name:'xiangqing',
                             path:'detail', // 使用占位符声明接收params参数
                             component:Detail,
 
@@ -64,26 +61,4 @@ const router = new VueRouter({
     ]
 
 })
-
-// 全局前置路由守卫---初始化，每次路由切换前被调用
-router.beforeEach((to,from,next)=>{
-    console.log(to,from)
-    // if(to.path === '/home/news' || to.path === '/home/message'){  //使用路由路径方式
-    if(to.name === 'xinwen' || to.name === 'xiaoxi'){ //使用路由名的方式
-        // 这里是事先再浏览器本地存储里输入了key为”school“，value为”atguigu“的键值对来模拟有权限的用户
-        if(localStorage.getItem('school')==='atguigu'){
-            next()
-        }else{
-            alert('学校名不对，无权限查看')
-        }
-    }else{
-        next()
-    }
-
-
-
-})
-
-//暴露路由
-export default router
 

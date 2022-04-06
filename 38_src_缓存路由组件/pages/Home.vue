@@ -12,7 +12,9 @@
       </ul>
 
       <!--   指定哪个组件保持活跃，不会因为切换页面而被销毁，include里面写组件名   -->
-      <keep-alive include="News">
+<!--      <keep-alive include="News">-->
+      <!--   指定多个组件保持活跃   -->
+      <keep-alive :include="['News','Message']">
         <router-view></router-view>
       </keep-alive>
 

@@ -10,12 +10,7 @@
           <router-link class="list-group-item " active-class="active" to="/home/message">Message</router-link>
         </li>
       </ul>
-
-      <!--   指定哪个组件保持活跃，不会因为切换页面而被销毁，include里面写组件名   -->
-      <keep-alive include="News">
-        <router-view></router-view>
-      </keep-alive>
-
+      <router-view></router-view>
     </div>
   </div>
 </template>
