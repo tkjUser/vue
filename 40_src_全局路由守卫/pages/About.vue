@@ -9,7 +9,8 @@ export default {
     console.log('About组件即将被销毁了')
   },
   mounted() {
-    console.log('About组件挂载完毕',this)
+    // console.log('About组件挂载完毕',this)
+    console.log('佩奇',this.$route)
   }
 }
 </script>
